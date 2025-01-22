@@ -19,8 +19,6 @@ const DashboardPage = () => {
         //startInactivityTimer()
         return <p>Please log in to view your dashboard.</p>;
     }
-
-    console.log(user)
     
     return (
         <div className="p-4">
