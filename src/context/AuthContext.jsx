@@ -41,16 +41,17 @@ export const AuthProvider = ({ children }) => {
         navigate('/');
     };
 
-    const register = async (email, password) => {
+    const register = async (username, email, password) => {
         try {
             const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/auth/register`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ email, password }),
+                body: JSON.stringify({ username, email, password }),
             });
             const data = await response.json();
             if (response.ok) {
                 alert('Registration successful, please log in');
+                navigate("/login");
             } else {
                 alert(data.message || 'Registration failed');
             }
@@ -61,8 +62,8 @@ export const AuthProvider = ({ children }) => {
     };
 
     return (
-        <AuthContext.Provider value={{ user, login, logout, register, loading }}>
-            {children}
+        <AuthContext.Provider value={{ user, login, logout, register }}>
+            {!loading && children}
         </AuthContext.Provider>
     );
 };

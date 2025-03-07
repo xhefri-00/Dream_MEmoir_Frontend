@@ -8,7 +8,7 @@ const LandingPage = () => {
             <div className="flex space-x-4">
                 <Link to="/login">
                     <button className="bg-deepBlue text-white px-6 py-3 rounded hover:bg-opacity-90">
-                        Login
+                        Log in
                     </button>
                 </Link>
                 <Link to="/register">

@@ -22,7 +22,7 @@ const LoginPage = () => {
     return (
         <div className="p-4 max-w-md mx-auto">
              <img src={dreamyImage}/>
-            <h2 className="text-xl font-bold mb-4">LogIn</h2>
+            <h2 className="text-xl font-bold mb-4">Log In</h2>
             <form onSubmit={handleSubmit}>
                 <input
                     type="email"
@@ -42,7 +42,7 @@ const LoginPage = () => {
                     type="submit"
                     className="bg-green-500 !important text-white py-2 px-4 rounded hover:bg-green-600"
                 >
-                    LogIn
+                    Log In
                 </button>
             </form>
         </div>

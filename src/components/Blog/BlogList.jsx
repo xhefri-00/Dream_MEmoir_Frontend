@@ -3,11 +3,11 @@ import React, { useEffect, useState } from 'react';
 const BlogList = ({ user }) => {
     const [blogs, setBlogs] = useState([]);
     const [loading, setLoading] = useState(true);
-    
+
     useEffect(() => {
         const fetchBlogs = async () => {
             try {
-                if (user){
+                if (user) {
                     const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/blogs/user/${user.id}`,
                         { method: 'GET',
                             headers: { 'Content-Type': 'application/json', 
@@ -22,7 +22,7 @@ const BlogList = ({ user }) => {
                         alert(data.message || 'Failed to fetch blogs');
                     }
                 }
-                
+
             } catch (error) {
                 console.error(error);
                 alert('An error occurred while fetching blogs');
@@ -38,7 +38,9 @@ const BlogList = ({ user }) => {
         try {
             const response = await fetch(
                 `${process.env.REACT_APP_BACKEND_URL}/blogs/${user.id}/${blogId}`,
-                { method: 'DELETE' }
+                { method: 'DELETE',
+                    headers: { 'Authorization': `Bearer ${user.access_token}` }
+                }
             );
             if (response.ok) {
                 setBlogs(blogs.filter((blog) => blog.id !== blogId));

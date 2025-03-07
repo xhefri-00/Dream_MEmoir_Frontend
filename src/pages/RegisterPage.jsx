@@ -1,27 +1,54 @@
 import React, { useState, useContext } from 'react';
 import { AuthContext } from '../context/AuthContext';
+import { useNavigate } from 'react-router-dom';
+import dreamyImage from '../img/dreamy.jpeg';
 
 const RegisterPage = () => {
     const { register } = useContext(AuthContext);
-    const [name, setName] = useState('');
+    const [username, setUsername] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [confirmPassword, setConfirmPassword] = useState('');
+    const [error, setError] = useState('');
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        register({ name, email, password });
+
+        if (!username || !email || !password || !confirmPassword) {
+            setError('All fields are required.');
+            return;
+        }
+
+        if (password !== confirmPassword) {
+            setError('Passwords do not match.');
+            return;
+        }
+
+        try {
+            await register(username, email, password);
+            setError(''); // Clear errors upon successful registration
+        } catch (err) {
+            setError(err.message || 'Registration failed. Please try again.');
+        }
     };
 
     return (
         <div className="p-4 max-w-md mx-auto">
-            <h2 className="text-xl font-bold mb-4">Register</h2>
+            <img src={dreamyImage} alt="Dreamy background" />
+            <h2 className="text-xl font-bold mb-4">Sign Up</h2>
+            {error && (
+                <div className="bg-red-100 text-red-600 p-2 rounded mb-4">
+                    {error}
+                </div>
+            )}
             <form onSubmit={handleSubmit}>
                 <input
                     type="text"
-                    placeholder="Name"
-                    value={name}
-                    onChange={(e) => setName(e.target.value)}
+                    placeholder="Username"
+                    value={username}
+                    onChange={(e) => setUsername(e.target.value)}
                     className="block w-full p-2 mb-2 border rounded"
+                    required
                 />
                 <input
                     type="email"
@@ -29,19 +56,29 @@ const RegisterPage = () => {
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     className="block w-full p-2 mb-2 border rounded"
+                    required
                 />
                 <input
                     type="password"
                     placeholder="Password"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
+                    className="block w-full p-2 mb-2 border rounded"
+                    required
+                />
+                <input
+                    type="password"
+                    placeholder="Confirm Password"
+                    value={confirmPassword}
+                    onChange={(e) => setConfirmPassword(e.target.value)}
                     className="block w-full p-2 mb-4 border rounded"
+                    required
                 />
                 <button
                     type="submit"
                     className="bg-green-500 text-white py-2 px-4 rounded hover:bg-green-600"
                 >
-                    Register
+                    Sign Up
                 </button>
             </form>
         </div>
