@@ -17,8 +17,10 @@ const HomePage = () => {
                     },
                 });
                 const data = await response.json();
-                console.log(data)
-                setBlogs(data);
+                console.log(data);
+                
+                // Sort blogs by latest first
+                setBlogs(data.sort((a, b) => new Date(b.created_at) - new Date(a.created_at)));
             };
             fetchBlogs();
         }
@@ -27,17 +29,17 @@ const HomePage = () => {
     return (
         <div className="p-6 bg-dreamyPurple min-h-screen text-white">
             <h1 className="text-3xl font-bold mb-6">Public Blogs</h1>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            
+            {/* Blog List - Display Vertically */}
+            <div className="flex flex-col gap-4">
                 {blogs.map((blog) => (
-                    <div
-                        key={blog.id}
-                        className="p-4 border rounded shadow hover:shadow-lg bg-softPink text-deepBlue"
-                    >
-                        <h2 className="text-xl font-bold">{blog.title}</h2>
-                        <p>{blog.content}</p>
+                    <div key={blog.id} className="p-4 border rounded shadow hover:shadow-lg bg-softPink text-black">
+                        <h2 className="w-full p-2 mb-2 border font-bold rounded">{blog.title}</h2>
+                        <p className="mt-2">{blog.content}</p>
                     </div>
                 ))}
             </div>
+
             <div className="mt-4">
                 <Link to="/dashboard">
                     <button className="bg-deepBlue text-white px-6 py-3 rounded hover:bg-opacity-90">
