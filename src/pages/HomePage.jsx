@@ -17,7 +17,6 @@ const HomePage = () => {
                     },
                 });
                 const data = await response.json();
-                console.log(data);
                 
                 // Sort blogs by latest first
                 setBlogs(data.sort((a, b) => new Date(b.created_at) - new Date(a.created_at)));
@@ -25,6 +24,35 @@ const HomePage = () => {
             fetchBlogs();
         }
     }, [user]);
+
+    // Function to save a blog as a bookmark
+    const handleSaveBookmark = async (blogId) => {
+        if (!user) {
+            alert("Please log in to save bookmarks.");
+            return;
+        }
+
+        try {
+            const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/bookmarks`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${user.access_token}`,
+                },
+                body: JSON.stringify({ blog_id: blogId }),
+            });
+
+            const data = await response.json();
+            if (response.ok) {
+                alert("Bookmark saved successfully!");
+            } else {
+                alert(data.message || "Failed to save bookmark.");
+            }
+        } catch (error) {
+            console.error("Error saving bookmark:", error);
+            alert("An error occurred while saving the bookmark.");
+        }
+    };
 
     return (
         <div className="p-6 bg-dreamyPurple min-h-screen text-white">
@@ -36,6 +64,14 @@ const HomePage = () => {
                     <div key={blog.id} className="p-4 border rounded shadow hover:shadow-lg bg-softPink text-black">
                         <h2 className="w-full p-2 mb-2 border font-bold rounded">{blog.title}</h2>
                         <p className="mt-2">{blog.content}</p>
+                        
+                        {/* Save as Bookmark Button */}
+                        <button
+                            onClick={() => handleSaveBookmark(blog.id)}
+                            className="mt-2 bg-blue-500 text-white py-1 px-3 rounded hover:bg-blue-600"
+                        >
+                            Save as Bookmark
+                        </button>
                     </div>
                 ))}
             </div>

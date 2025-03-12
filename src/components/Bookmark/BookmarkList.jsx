@@ -6,14 +6,16 @@ const BookmarkList = ({ user }) => {
     useEffect(() => {
         const fetchBookmarks = async () => {
             try {
-                if (user){
-                    const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/bookmarks`,
-                        { method: 'GET',
-                            headers: { 'Content-Type': 'application/json', 
-                                'Authorization': `Bearer ${user.access_token}`, 
-                            }, credentials: 'include',
-                        }
-                    );
+                if (user) {
+                    const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/bookmarks`, {
+                        method: 'GET',
+                        headers: { 
+                            'Content-Type': 'application/json',
+                            'Authorization': `Bearer ${user.access_token}`, 
+                        },
+                        credentials: 'include',
+                    });
+
                     const data = await response.json();
                     if (response.ok) {
                         setBookmarks(data);
@@ -34,7 +36,7 @@ const BookmarkList = ({ user }) => {
         try {
             const response = await fetch(
                 `${process.env.REACT_APP_BACKEND_URL}/bookmarks/${bookmarkId}`,
-                { method: 'DELETE' }
+                { method: 'DELETE', headers: { 'Authorization': `Bearer ${user.access_token}` } }
             );
             if (response.ok) {
                 setBookmarks(bookmarks.filter((bookmark) => bookmark.id !== bookmarkId));
@@ -57,8 +59,9 @@ const BookmarkList = ({ user }) => {
             ) : (
                 <ul>
                     {bookmarks.map((bookmark) => (
-                        <li key={bookmark.id} className="mb-4 p-4 border rounded shadow">
-                            <p>{bookmark.blog}</p>
+                        <li key={bookmark.id} className="mb-4 p-4 border rounded shadow bg-white text-black">
+                            <h3 className="font-bold">{bookmark.title}</h3>
+                            <p>{bookmark.content}</p>
                             <button
                                 onClick={() => handleDelete(bookmark.id)}
                                 className="mt-2 bg-red-500 text-white py-1 px-3 rounded hover:bg-red-600"
