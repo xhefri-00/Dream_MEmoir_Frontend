@@ -56,8 +56,14 @@ const HomePage = () => {
 
     return (
         <div className="p-6 bg-dreamyPurple min-h-screen text-white">
-            <h1 className="text-3xl font-bold mb-6">Public Blogs</h1>
-            
+            <div className="mt-4 flex flex-row justify-between">
+            <h1 className="text-3xl font-bold mb-6 text-white">Public Blogs</h1>
+                <Link to="/dashboard">
+                    <button className="text-color bg-deepBlue text-white px-6 py-3 rounded hover:bg-opacity-90">
+                        Go to Dashboard
+                    </button>
+                </Link>
+            </div>
             {/* Blog List - Display Vertically */}
             <div className="flex flex-col gap-4">
                 {blogs.map((blog) => (
@@ -68,7 +74,7 @@ const HomePage = () => {
                         {/* Save as Bookmark Button */}
                         <button
                             onClick={() => handleSaveBookmark(blog.id)}
-                            className="mt-2 bg-blue-500 text-white py-1 px-3 rounded hover:bg-blue-600"
+                            className="text-color mt-2 bg-blue-500 text-white py-1 px-3 rounded hover:bg-blue-600"
                         >
                             Save as Bookmark
                         </button>
@@ -76,13 +82,6 @@ const HomePage = () => {
                 ))}
             </div>
 
-            <div className="mt-4">
-                <Link to="/dashboard">
-                    <button className="bg-deepBlue text-white px-6 py-3 rounded hover:bg-opacity-90">
-                        Go to Dashboard
-                    </button>
-                </Link>
-            </div>
         </div>
     );
 };

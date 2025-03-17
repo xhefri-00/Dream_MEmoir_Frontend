@@ -121,7 +121,7 @@ const BlogList = ({ user }) => {
                         <p>{blog.content}</p>
                         <button
                             onClick={() => handleDelete(blog.id)}
-                            className="mt-2 bg-red-500 text-white py-1 px-3 rounded hover:bg-red-600"
+                            className="text-color mt-2 bg-red-500 text-white py-1 px-3 rounded hover:bg-red-600"
                         >
                             Delete
                         </button>
@@ -130,7 +130,7 @@ const BlogList = ({ user }) => {
                                 setBlogObject(blog)
                                 setShowEdit(!showEdit)
                             }}
-                            className="mt-2 bg-red-500 text-white py-1 px-3 rounded hover:bg-red-600"
+                            className="text-color mt-2 bg-red-500 text-white py-1 px-3 rounded hover:bg-red-600"
                         >
                             Edit
                         </button>

@@ -64,7 +64,7 @@ const BookmarkList = ({ user }) => {
                             <p>{bookmark.content}</p>
                             <button
                                 onClick={() => handleDelete(bookmark.id)}
-                                className="mt-2 bg-red-500 text-white py-1 px-3 rounded hover:bg-red-600"
+                                className="text-color mt-2 bg-red-500 text-white py-1 px-3 rounded hover:bg-red-600"
                             >
                                 Delete
                             </button>

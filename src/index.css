@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+.text-color {
+  color: white
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',

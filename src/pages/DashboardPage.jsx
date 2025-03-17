@@ -60,7 +60,7 @@ const DashboardPage = () => {
                     Log out
                 </button>
                 <Link to="/home">
-                    <button className="bg-deepBlue text-white py-2 px-4 rounded hover:bg-opacity-90">
+                    <button className="text-color bg-deepBlue text-white py-2 px-4 rounded hover:bg-opacity-90">
                         Go to Home
                     </button>
                 </Link>
