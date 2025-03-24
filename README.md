@@ -1,22 +1,36 @@
-# Dream Memoir - Frontend
+# 🌙 Dream Memoir - Frontend  
 
-**Dream Memoir** is a personal blogging platform with a sleek UI for creating, managing, and bookmarking blog posts. Built with React.
+**Dream Memoir** is a personal blogging platform with a sleek UI for exploring, managing, and bookmarking blog posts. Built with React.js and TailwindCSS.  
 
-## Features
-- Write, read, edit, and delete blog posts
-- View all blogs in a structured layout
-- Save favorite blogs as bookmarks
-- Responsive design for mobile & desktop
+---
 
-## Tech Stack
-- React.js
-- React Router
-- TailwindCSS / CSS
-- Axios (for API requests)
+## 🚀 Features  
 
-## Installation
+✅ Read and explore blog posts  
+✅ Save favorite blogs as bookmarks  
+✅ View and manage saved bookmarks  
+✅ Responsive and modern UI  
 
-1. **Clone the repository**
-   ```bash
-   git clone https://github.com/yourusername/dream-memoir-frontend.git
-   cd dream-memoir-frontend
+## 🚀 Deployments:
+- Netlify
+- Vercel
+
+---
+
+## 🛠️ Tech Stack  
+
+- **Frontend Framework:** React.js  
+- **Styling:** Tailwind CSS  
+- **Routing:** React Router  
+- **API Requests:** Axios
+
+## 📥 Installation
+### **1️⃣ Clone the Repository**  
+git clone https://github.com/yourusername/dream-memoir-frontend.git
+cd dream-memoir-frontend
+### **2️⃣ Install Dependencies**
+npm start
+### **3️⃣ Set Up Environment Variables**
+REACT_APP_BACKEND_URL=https://dream-memoir-backend.onrender.com
+### **4️⃣ Start the Development Server**
+npm start
