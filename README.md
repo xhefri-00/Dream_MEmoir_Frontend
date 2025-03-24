@@ -1,4 +1,4 @@
-# 🌙 Dream Memoir - Frontend  
+# 🌙 Dream MEmoir - Frontend  
 
 **Dream Memoir** is a personal blogging platform with a sleek UI for exploring, managing, and bookmarking blog posts. Built with React.js and TailwindCSS.  
 
@@ -26,7 +26,7 @@
 
 ## 📥 Installation
 ### **1️⃣ Clone the Repository**  
-git clone https://github.com/yourusername/dream-memoir-frontend.git
+git clone https://github.com/xhefri-00/Dream_MEmoir_Frontend.git
 cd dream-memoir-frontend
 ### **2️⃣ Install Dependencies**
 npm start
